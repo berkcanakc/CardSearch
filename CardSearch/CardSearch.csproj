@@ -138,7 +138,6 @@
     <Content Include="Content\assets\favicon.ico" />
     <Content Include="Content\css\db.css" />
     <Content Include="Content\css\styles.css" />
-    <Content Include="Content\index.html" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
