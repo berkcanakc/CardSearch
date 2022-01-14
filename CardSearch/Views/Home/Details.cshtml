@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CardSearch.Models.CardModel>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-6">
+                        <div class="white-box"><img src="@item.img" class="img-responsive"></div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-6">
+                        <h4 class="box-title mt-5">Description:</h4>
+                        <p>@item.desc</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

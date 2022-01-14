@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CardSearch.Models.CardModel>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder"></h1>
+            <form method="get" asp-action="Index">
+                <p>
+                    <input type="search" placeholder="Search for Yu-Gi-Oh! Cards" name="searcher" value="@ViewData["Arama"]" id="searchcards" class="ui-autocomplete-input" autocomplete="off">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </p>
+            </form>
+            <p class="lead fw-normal text-white-50 mb-0"></p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-4">
+    <div class="container px-3 px-lg-4 mt-4">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-5 row-cols-xl-5 justify-content-center">
+            <br />
+            @foreach (var item in Model)
+            {
+        <a href="/Home/Details?id=@item.id">
+            <div class="col mb-6">
+                <div class="card h-100">
+                    <img class="card-img-top" src=@item.img />
+                </div>
+            </div>
+        </a>
+                }
+        </div>
+        </div>
+</section>
+
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    UlElementClasses = new List<string>
+    {"pagination justify-content-center" },
+    LiElementClasses = new List<string>
+    {"page-link" , "active"},
+    DisplayPageCountAndCurrentLocation = true
+}
+
+)
